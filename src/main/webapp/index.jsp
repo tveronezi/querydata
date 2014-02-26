@@ -20,7 +20,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>listdata</title>
+    <title>querydata</title>
     <link rel="stylesheet" type="text/css" href="<c:url value='/webjars/extjs/4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/app/app.css'/>">
     <script type="text/javascript" src="<c:url value='/webjars/extjs/4.2.1.883/ext-all.js'/>"></script>

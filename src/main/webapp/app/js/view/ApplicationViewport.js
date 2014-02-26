@@ -19,13 +19,13 @@
 (function () {
     'use strict';
 
-    Ext.define('listdata.view.ApplicationViewport', {
+    Ext.define('querydata.view.ApplicationViewport', {
         extend: 'Ext.container.Viewport',
-        alias: 'widget.listdata-viewport',
+        alias: 'widget.querydata-viewport',
         layout: 'fit',
         items: [
             {
-                xtype: 'listdata-application-container'
+                xtype: 'querydata-application-container'
             }
         ]
     });

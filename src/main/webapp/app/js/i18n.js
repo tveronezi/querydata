@@ -44,7 +44,7 @@
         'dummy': ''
     };
 
-    Ext.define('listdata.i18n', {
+    Ext.define('querydata.i18n', {
         singleton: true,
         get: function (key, values, defaultValue) {
             var template = this.messages[key];

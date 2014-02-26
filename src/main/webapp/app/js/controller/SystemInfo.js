@@ -21,17 +21,17 @@
 
     var pageSize = 10;
 
-    Ext.define('listdata.controller.SystemInfo', {
+    Ext.define('querydata.controller.SystemInfo', {
         extend: 'Ext.app.Controller',
 
-        requires: ['listdata.view.AutoGrid', 'listdata.view.GridParams', 'Ext.toolbar.Paging', 'Ext.util.Point'],
+        requires: ['querydata.view.AutoGrid', 'querydata.view.GridParams', 'Ext.toolbar.Paging', 'Ext.util.Point'],
 
         views: ['AutoGrid'],
 
         refs: [
             {
                 ref: 'container',
-                selector: 'listdata-application-container'
+                selector: 'querydata-application-container'
             }
         ],
 
@@ -77,7 +77,7 @@
                     },
                     success: function (response, opts) {
                         var data = Ext.decode(response.responseText);
-                        createWindow(Ext.create('listdata.view.AutoGrid', {
+                        createWindow(Ext.create('querydata.view.AutoGrid', {
                             url: url,
                             initData: data,
                             limit: pageSize
@@ -112,16 +112,16 @@
         init: function () {
             var me = this;
             me.control({
-                'listdata-application-container': {
+                'querydata-application-container': {
                     'ux-add-panel': function () {
                         var win = Ext.create('Ext.window.Window', {
-                            title: listdata.i18n.get('grid.params'),
+                            title: querydata.i18n.get('grid.params'),
                             height: 600,
                             width: 800,
                             layout: 'fit',
                             modal: true,
                             closeAction: 'destroy',
-                            items: Ext.create('listdata.view.GridParams', {
+                            items: Ext.create('querydata.view.GridParams', {
                                 listeners: {
                                     'ux-cancel': function () {
                                         win.close();

@@ -19,10 +19,10 @@
 (function () {
     'use strict';
 
-    Ext.define('listdata.view.ApplicationContainer', {
+    Ext.define('querydata.view.ApplicationContainer', {
         extend: 'Ext.tab.Panel',
-        alias: 'widget.listdata-application-container',
-        title: listdata.i18n.get('application.name'),
+        alias: 'widget.querydata-application-container',
+        title: querydata.i18n.get('application.name'),
         tools: [
             {
                 type: 'plus',

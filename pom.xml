@@ -17,10 +17,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>buildnplay</groupId>
-  <artifactId>listdata</artifactId>
+  <artifactId>querydata</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>listdata</name>
+  <name>querydata</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tomee.version>1.6.0</tomee.version>
@@ -98,7 +98,7 @@
           <failOnError>true</failOnError>
           <options>
             <vars>true</vars>
-            <predef>Ext,listdata,console,window</predef>
+            <predef>Ext,querydata,console,window</predef>
             <indent>4</indent>
           </options>
           <sourceFolders>
@@ -141,7 +141,7 @@
         <version>${tomee.version}</version>
         <configuration>
           <simpleLog>true</simpleLog>
-          <context>listdata</context>
+          <context>querydata</context>
           <tomeeClassifier>jaxrs</tomeeClassifier>
           <config>${project.basedir}/src/main/tomee/conf</config>
           <!--<webapps>-->

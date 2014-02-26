@@ -23,16 +23,16 @@
         enabled: true,
         disableCaching: false,
         paths: {
-            'listdata': 'app/js'
+            'querydata': 'app/js'
         }
     });
 
     Ext.application({
-        name: 'listdata',
+        name: 'querydata',
         appFolder: 'app/js',
 
         requires: [
-            'listdata.i18n'
+            'querydata.i18n'
         ],
 
         controllers: [
@@ -48,9 +48,9 @@
             console.log('init application...');
 
             var title = Ext.get(Ext.dom.Query.selectNode('title'));
-            title.update(listdata.i18n.get('application.name'));
+            title.update(querydata.i18n.get('application.name'));
 
-            Ext.create('listdata.view.ApplicationViewport');
+            Ext.create('querydata.view.ApplicationViewport');
         }
     });
 }());

@@ -19,9 +19,9 @@
 (function () {
     'use strict';
 
-    Ext.define('listdata.view.GridParams', {
+    Ext.define('querydata.view.GridParams', {
         extend: 'Ext.form.Panel',
-        alias: 'widget.listdata-autogridparams',
+        alias: 'widget.querydata-autogridparams',
         bodyPadding: 5,
         layout: 'anchor',
         defaults: {
@@ -30,12 +30,12 @@
         defaultType: 'textfield',
         items: [
             {
-                fieldLabel: listdata.i18n.get('grid.title'),
+                fieldLabel: querydata.i18n.get('grid.title'),
                 name: 'name',
                 allowBlank: false
             },
             {
-                fieldLabel: listdata.i18n.get('grid.script'),
+                fieldLabel: querydata.i18n.get('grid.script'),
                 name: 'script',
                 xtype: 'textarea',
                 height: 400,
@@ -45,18 +45,18 @@
         // Reset and Submit buttons
         buttons: [
             {
-                text: listdata.i18n.get('cancel'),
+                text: querydata.i18n.get('cancel'),
                 handler: function () {
-                    this.up('listdata-autogridparams').fireEvent('ux-cancel');
+                    this.up('querydata-autogridparams').fireEvent('ux-cancel');
                 }
             },
             {
-                text: listdata.i18n.get('save'),
+                text: querydata.i18n.get('save'),
                 formBind: true,
                 disabled: true,
                 handler: function () {
                     var form = this.up('form').getForm();
-                    this.up('listdata-autogridparams').fireEvent('ux-save', form.getValues());
+                    this.up('querydata-autogridparams').fireEvent('ux-save', form.getValues());
                 }
             }
         ]

@@ -19,15 +19,15 @@
 (function () {
     'use strict';
 
-    Ext.define('listdata.view.AutoGrid', {
+    Ext.define('querydata.view.AutoGrid', {
         extend: 'Ext.grid.Panel',
-        alias: 'widget.listdata-autogrid',
+        alias: 'widget.querydata-autogrid',
         constructor: function (config) {
             var me = this;
             var columns = [];
             var fields = [];
             Ext.each(config.initData.columns, function (columnData) {
-                columnData.text =  listdata.i18n.get(columnData.text, {}, columnData.text);
+                columnData.text =  querydata.i18n.get(columnData.text, {}, columnData.text);
                 columns.push(columnData);
                 fields.push(columnData.dataIndex);
             });
@@ -59,7 +59,7 @@
                 }
             ];
 
-            listdata.view.AutoGrid.superclass.constructor.call(me, config);
+            querydata.view.AutoGrid.superclass.constructor.call(me, config);
         }
     });
 }());
