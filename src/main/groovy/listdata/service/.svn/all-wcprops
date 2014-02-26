@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/asf/!svn/ver/1570413/tomee/tomee/trunk/tomee/tomee-webaccess/src/main/groovy/org/apache/tomee/webaccess/service
+END
+ContextsServiceImpl.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/repos/asf/!svn/ver/1570413/tomee/tomee/trunk/tomee/tomee-webaccess/src/main/groovy/org/apache/tomee/webaccess/service/ContextsServiceImpl.groovy
+END
+LogServiceImpl.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/repos/asf/!svn/ver/1570375/tomee/tomee/trunk/tomee/tomee-webaccess/src/main/groovy/org/apache/tomee/webaccess/service/LogServiceImpl.groovy
+END
+ScriptingServiceImpl.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/repos/asf/!svn/ver/1570006/tomee/tomee/trunk/tomee/tomee-webaccess/src/main/groovy/org/apache/tomee/webaccess/service/ScriptingServiceImpl.groovy
+END

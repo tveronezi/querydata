@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/asf/!svn/ver/1570006/tomee/tomee/trunk/tomee/tomee-webaccess/src/main/groovy/org/apache/tomee/webaccess/data/dto
+END
+AuthenticationResultDto.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/repos/asf/!svn/ver/1566034/tomee/tomee/trunk/tomee/tomee-webaccess/src/main/groovy/org/apache/tomee/webaccess/data/dto/AuthenticationResultDto.groovy
+END
+SessionResultDto.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/repos/asf/!svn/ver/1541905/tomee/tomee/trunk/tomee/tomee-webaccess/src/main/groovy/org/apache/tomee/webaccess/data/dto/SessionResultDto.groovy
+END
+ContextResultDto.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/repos/asf/!svn/ver/1570006/tomee/tomee/trunk/tomee/tomee-webaccess/src/main/groovy/org/apache/tomee/webaccess/data/dto/ContextResultDto.groovy
+END

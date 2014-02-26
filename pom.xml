@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>buildnplay</groupId>
+  <artifactId>listdata</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>listdata</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <tomee.version>1.6.0</tomee.version>
+    <tomcat.version>7.0.47</tomcat.version>
+    <openejb.version>4.6.0</openejb.version>
+    <groovy.version>2.1.9</groovy.version>
+  </properties>
+  <repositories>
+    <repository>
+      <id>codehaus</id>
+      <url>http://repository.codehaus.org/org/codehaus/groovy/</url>
+    </repository>
+  </repositories>
+  <profiles>
+    <profile>
+      <id>tomee</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+  </profiles>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.openejb</groupId>
+      <artifactId>openejb-core</artifactId>
+      <version>${openejb.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>extjs</artifactId>
+      <version>4.2.1.883</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-json</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-jsr223</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.16</version>
+        <configuration>
+          <systemPropertyVariables>
+            <arquillian.tomee.path>${project.basedir}/target/arquillian-tomee</arquillian.tomee.path>
+            <java.security.auth.login.config>${project.basedir}/target/arquillian-tomee/conf/login.config
+            </java.security.auth.login.config>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.googlecode.jslint4java</groupId>
+        <artifactId>jslint4java-maven-plugin</artifactId>
+        <version>2.0.0</version>
+        <configuration>
+          <failOnError>true</failOnError>
+          <options>
+            <vars>true</vars>
+            <predef>Ext,listdata,console,window</predef>
+            <indent>4</indent>
+          </options>
+          <sourceFolders>
+            <sourceFolder>${basedir}/src/main/webapp/app/js</sourceFolder>
+          </sourceFolders>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <goals>
+              <goal>lint</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <compilerId>groovy-eclipse-compiler</compilerId>
+          <verbose>true</verbose>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-eclipse-compiler</artifactId>
+            <version>2.8.0-01</version>
+          </dependency>
+          <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-eclipse-batch</artifactId>
+            <version>2.1.8-01</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.openejb.maven</groupId>
+        <artifactId>tomee-maven-plugin</artifactId>
+        <version>${tomee.version}</version>
+        <configuration>
+          <simpleLog>true</simpleLog>
+          <context>listdata</context>
+          <tomeeClassifier>jaxrs</tomeeClassifier>
+          <config>${project.basedir}/src/main/tomee/conf</config>
+          <!--<webapps>-->
+          <!--<webapp>org.apache.openejb:tomee-webaccess:${tomee.version}?name=webaccess</webapp>-->
+          <!--</webapps>-->
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>codenarc-maven-plugin</artifactId>
+        <version>0.18-1</version>
+        <configuration>
+          <sourceDirectory>${project.basedir}/src/main/groovy</sourceDirectory>
+          <groovyVersion>2.2.1</groovyVersion>
+          <codeNarcVersion>0.20</codeNarcVersion>
+          <maxPriority1Violations>0</maxPriority1Violations>
+          <maxPriority2Violations>0</maxPriority2Violations>
+          <maxPriority3Violations>0</maxPriority3Violations>
+          <rulesetfiles>
+            rulesets/basic.xml,rulesets/exceptions.xml,rulesets/imports.xml,rulesets/unnecessary.xml,rulesets/convention.xml
+          </rulesetfiles>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>codenarc</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
