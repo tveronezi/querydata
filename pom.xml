@@ -90,30 +90,31 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>com.googlecode.jslint4java</groupId>
-        <artifactId>jslint4java-maven-plugin</artifactId>
-        <version>2.0.0</version>
-        <configuration>
-          <failOnError>true</failOnError>
-          <options>
-            <vars>true</vars>
-            <predef>Ext,querydata,console,window</predef>
-            <indent>4</indent>
-          </options>
-          <sourceFolders>
-            <sourceFolder>${basedir}/src/main/webapp/app/js</sourceFolder>
-          </sourceFolders>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>install</phase>
-            <goals>
-              <goal>lint</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+      <!-- Add it back after demo (Maven 3 only) -->
+      <!--<plugin>-->
+        <!--<groupId>com.googlecode.jslint4java</groupId>-->
+        <!--<artifactId>jslint4java-maven-plugin</artifactId>-->
+        <!--<version>2.0.0</version>-->
+        <!--<configuration>-->
+          <!--<failOnError>true</failOnError>-->
+          <!--<options>-->
+            <!--<vars>true</vars>-->
+            <!--<predef>Ext,querydata,console,window</predef>-->
+            <!--<indent>4</indent>-->
+          <!--</options>-->
+          <!--<sourceFolders>-->
+            <!--<sourceFolder>${basedir}/src/main/webapp/app/js</sourceFolder>-->
+          <!--</sourceFolders>-->
+        <!--</configuration>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<phase>install</phase>-->
+            <!--<goals>-->
+              <!--<goal>lint</goal>-->
+            <!--</goals>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
