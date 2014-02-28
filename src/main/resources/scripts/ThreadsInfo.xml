@@ -1,0 +1,38 @@
+<xml>
+  <id>ds_threads</id>
+  <name>Threads Info</name>
+  <script>
+    <![CDATA[
+import java.lang.management.ManagementFactory
+def mbean = ManagementFactory.threadMXBean
+infoDto.rows = mbean.allThreadIds.collect {
+  def threadInfo = mbean.getThreadInfo(it)
+  [
+    tId: threadInfo.threadId,
+    tName: threadInfo.threadName,
+    tState: threadInfo.threadState.name(),
+    tLockName: threadInfo.lockName
+  ]
+}
+infoDto.columns << [
+  dataIndex: 'tId',
+  text: 'thread.id',
+  type: 'integer',
+  hidden: true
+]
+infoDto.columns << [
+  dataIndex: 'tName',
+  text: 'thread.name',
+  flex: 1
+]
+infoDto.columns << [
+  dataIndex: 'tState',
+  text: 'thread.state'
+]
+infoDto.columns << [
+  dataIndex: 'tLockName',
+  text: 'thread.lock.name'
+]
+    ]]>
+  </script>
+</xml>

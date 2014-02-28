@@ -31,65 +31,19 @@ class DataSetsServiceImpl {
     private List<DataSetDto> dataSets = []
     private int id = 0
 
+    private DataSetDto loadDtoFromResource(String path) {
+        def records = new XmlSlurper().parse(this.class.classLoader.getResourceAsStream(path))
+        new DataSetDto(
+                id: records.getProperty('id'),
+                name: records.getProperty('name'),
+                script: records.getProperty('script')
+        )
+    }
+
     @PostConstruct
     void init() {
-        dataSets << new DataSetDto(
-                id: 'ds_sys',
-                name: 'System Info',
-                script: """
-System.properties.each { key, value ->
-    infoDto.rows << [
-            key: key,
-            value: value
-    ]
-}
-infoDto.columns << [
-        dataIndex: 'key',
-        text: 'sysprop.key'
-]
-infoDto.columns << [
-        dataIndex: 'value',
-        text: 'sysprop.value',
-        flex: 1
-]
-"""
-        )
-        dataSets << new DataSetDto(
-                id: 'ds_thread',
-                name: 'Threads Info',
-                script: """
-import java.lang.management.ManagementFactory
-def mbean = ManagementFactory.threadMXBean
-infoDto.rows = mbean.allThreadIds.collect {
-    def threadInfo = mbean.getThreadInfo(it)
-    [
-            tId: threadInfo.threadId,
-            tName: threadInfo.threadName,
-            tState: threadInfo.threadState.name(),
-            tLockName: threadInfo.lockName
-    ]
-}
-infoDto.columns << [
-        dataIndex: 'tId',
-        text: 'thread.id',
-        type: 'integer',
-        hidden: true
-]
-infoDto.columns << [
-        dataIndex: 'tName',
-        text: 'thread.name',
-        flex: 1
-]
-infoDto.columns << [
-        dataIndex: 'tState',
-        text: 'thread.state'
-]
-infoDto.columns << [
-        dataIndex: 'tLockName',
-        text: 'thread.lock.name'
-]
-"""
-        )
+        dataSets << loadDtoFromResource('/scripts/SystemInfo.xml')
+        dataSets << loadDtoFromResource('/scripts/ThreadsInfo.xml')
     }
 
     @Lock(LockType.READ)

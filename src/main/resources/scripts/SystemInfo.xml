@@ -1,0 +1,23 @@
+<xml>
+  <id>ds_sys</id>
+  <name>System Info</name>
+  <script>
+    <![CDATA[
+System.properties.each { key, value ->
+  infoDto.rows << [
+    key: key,
+    value: value
+  ]
+}
+infoDto.columns << [
+  dataIndex: 'key',
+  text: 'sysprop.key'
+]
+infoDto.columns << [
+  dataIndex: 'value',
+  text: 'sysprop.value',
+  flex: 1
+]
+    ]]>
+  </script>
+</xml>
